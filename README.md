@@ -1,4 +1,4 @@
-# Food Delivary — Frontend (Phase 1: Project Setup)
+# FoodPanda Clone — Frontend (Phase 1: Project Setup)
 
 ## ✅ Status: Verified working
 

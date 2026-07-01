@@ -3,77 +3,104 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * DESIGN SYSTEM — "Street-Food Editorial"
+ * Warm cream/charcoal base instead of stark white/black. A single
+ * confident chili-red accent (not a blue/purple SaaS default) plus a
+ * herb-green for success/fresh states and a saffron for warnings.
+ * Fraunces (display serif, warm + a little wonky) for headings,
+ * Archivo (condensed grotesk) for everything else.
+ */
 :root {
-  --radius: 0.625rem;
+  --radius: 0.75rem;
 
-  /* Base neutral palette — placeholder, replaced with brand palette in Phase 2 */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Surfaces */
+  --background: oklch(0.98 0.012 75);
+  --foreground: oklch(0.18 0.02 40);
+  --card: oklch(0.995 0.008 75);
+  --card-foreground: oklch(0.18 0.02 40);
+  --popover: oklch(0.995 0.008 75);
+  --popover-foreground: oklch(0.18 0.02 40);
+
+  /* Brand */
+  --primary: oklch(0.58 0.19 35);
+  --primary-foreground: oklch(0.98 0.01 75);
+  --secondary: oklch(0.94 0.025 75);
+  --secondary-foreground: oklch(0.3 0.04 40);
+
+  /* Supporting */
+  --muted: oklch(0.94 0.02 75);
+  --muted-foreground: oklch(0.48 0.025 50);
+  --accent: oklch(0.55 0.13 152); /* herb green — fresh / success */
+  --accent-foreground: oklch(0.98 0.01 75);
+  --warning: oklch(0.78 0.15 80); /* saffron */
+  --warning-foreground: oklch(0.25 0.05 60);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0.01 75);
+
+  /* Structural */
+  --border: oklch(0.88 0.018 60);
+  --input: oklch(0.88 0.018 60);
+  --ring: oklch(0.58 0.19 35 / 0.45);
+
+  /* Charts (kept distinct from brand red so data viz doesn't collide with CTAs) */
+  --chart-1: oklch(0.58 0.19 35);
+  --chart-2: oklch(0.55 0.13 152);
+  --chart-3: oklch(0.78 0.15 80);
+  --chart-4: oklch(0.55 0.16 260);
+  --chart-5: oklch(0.62 0.14 320);
+
+  /* Sidebar (dashboard shell — Phase 5/6) */
+  --sidebar: oklch(0.16 0.012 50);
+  --sidebar-foreground: oklch(0.95 0.015 70);
+  --sidebar-primary: oklch(0.66 0.19 35);
+  --sidebar-primary-foreground: oklch(0.16 0.012 50);
+  --sidebar-accent: oklch(0.24 0.016 50);
+  --sidebar-accent-foreground: oklch(0.95 0.015 70);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.66 0.19 35 / 0.5);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --background: oklch(0.16 0.012 50);
+  --foreground: oklch(0.95 0.015 70);
+  --card: oklch(0.205 0.014 50);
+  --card-foreground: oklch(0.95 0.015 70);
+  --popover: oklch(0.205 0.014 50);
+  --popover-foreground: oklch(0.95 0.015 70);
+
+  --primary: oklch(0.66 0.19 35);
+  --primary-foreground: oklch(0.16 0.012 50);
+  --secondary: oklch(0.27 0.018 50);
+  --secondary-foreground: oklch(0.92 0.015 70);
+
+  --muted: oklch(0.27 0.018 50);
+  --muted-foreground: oklch(0.68 0.02 60);
+  --accent: oklch(0.62 0.13 152);
+  --accent-foreground: oklch(0.16 0.012 50);
+  --warning: oklch(0.78 0.15 80);
+  --warning-foreground: oklch(0.2 0.04 60);
+  --destructive: oklch(0.62 0.21 25);
+  --destructive-foreground: oklch(0.16 0.012 50);
+
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.66 0.19 35 / 0.5);
+
+  --chart-1: oklch(0.66 0.19 35);
+  --chart-2: oklch(0.62 0.13 152);
+  --chart-3: oklch(0.78 0.15 80);
+  --chart-4: oklch(0.62 0.16 260);
+  --chart-5: oklch(0.68 0.14 320);
+
+  --sidebar: oklch(0.13 0.012 50);
+  --sidebar-foreground: oklch(0.95 0.015 70);
+  --sidebar-primary: oklch(0.66 0.19 35);
+  --sidebar-primary-foreground: oklch(0.13 0.012 50);
+  --sidebar-accent: oklch(0.22 0.016 50);
+  --sidebar-accent-foreground: oklch(0.95 0.015 70);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar-ring: oklch(0.66 0.19 35 / 0.5);
 }
 
 @theme inline {
@@ -96,6 +123,8 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -116,6 +145,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   --font-sans: var(--font-sans-custom), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-serif, Georgia, serif;
 }
 
 @layer base {
@@ -124,5 +154,29 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+}
+
+/* Subtle warm grain texture for hero/empty-state surfaces — avoids flat,
+   lifeless backgrounds without resorting to gradients. Used sparingly via
+   the `.bg-grain` utility class, not applied globally. */
+@layer utilities {
+  .bg-grain {
+    position: relative;
+  }
+  .bg-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
 }
