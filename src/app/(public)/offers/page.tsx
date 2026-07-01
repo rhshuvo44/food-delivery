@@ -1,3 +1,4 @@
+"use client";
 import { Copy, Tag } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -19,7 +20,7 @@ export default function OffersPage() {
       </div>
 
       {/* Hero banner */}
-      <div className="from-primary/20 via-primary/10 to-warning/10 mb-8 flex h-40 items-center justify-center rounded-2xl bg-gradient-to-br">
+      <div className="from-primary/20 via-primary/10 to-warning/10 mb-8 flex h-40 items-center justify-center rounded-2xl bg-linear-to-br">
         <div className="text-center">
           <p className="font-display text-primary text-4xl font-bold">50% OFF</p>
           <p className="text-muted-foreground mt-1 text-sm">On your first order</p>

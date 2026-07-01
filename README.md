@@ -1,4 +1,4 @@
-# FoodPanda Clone — Frontend (Phase 1: Project Setup)
+# Food Order — Frontend (Phase 1: Project Setup)
 
 ## ✅ Status: Verified working
 

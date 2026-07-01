@@ -81,7 +81,7 @@ export default function FoodDetailPage({
 
       <div className="mt-6 grid gap-8 lg:grid-cols-2">
         {/* Image placeholder */}
-        <div className="bg-muted flex h-72 items-center justify-center overflow-hidden rounded-2xl lg:h-auto lg:min-h-[320px]">
+        <div className="bg-muted flex h-72 items-center justify-center overflow-hidden rounded-2xl lg:h-auto lg:min-h-80">
           <span className="font-display text-muted-foreground/20 text-8xl font-bold">
             {food.name.charAt(0)}
           </span>

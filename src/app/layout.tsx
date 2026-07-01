@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Providers } from "@/providers";
 import { fraunces, archivo } from "@/lib/fonts";
-// Ignore missing type declarations for CSS module side-effect import
-// @ts-ignore
+
 import "./globals.css";
 
 export const metadata: Metadata = {
