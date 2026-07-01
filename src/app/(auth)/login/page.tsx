@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -33,7 +33,7 @@ export default function LoginPage() {
   async function onSubmit(data: LoginForm) {
     // Simulated — Phase 7 wires this to the real API
     await new Promise((r) => setTimeout(r, 900));
-    console.log("login", data);
+    // TODO(Phase 7): replace with real auth API call
     toast.success("Welcome back!");
     router.push("/dashboard/customer");
   }

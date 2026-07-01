@@ -1,18 +1,23 @@
 "use client";
 
-import { useState, useMemo } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
+import { useMemo, useState } from "react";
 
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/common/EmptyState";
-import { RestaurantCard } from "@/modules/restaurant/components/RestaurantCard";
-import { MOCK_RESTAURANTS, CUISINE_CATEGORIES } from "@/constants/mockData";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { CUISINE_CATEGORIES, MOCK_RESTAURANTS } from "@/constants/mockData";
 import { useDebounce } from "@/hooks/useDebounce";
+import { RestaurantCard } from "@/modules/restaurant/components/RestaurantCard";
+
+import { useSearchParams } from "next/navigation";
 
 export default function RestaurantsPage() {
+  const searchParams = useSearchParams();
   const [query, setQuery] = useState("");
-  const [activeCuisine, setActiveCuisine] = useState<string | null>(null);
+  const [activeCuisine, setActiveCuisine] = useState<string | null>(
+    searchParams.get("cuisine"),
+  );
   const [onlyOpen, setOnlyOpen] = useState(false);
 
   const debouncedQuery = useDebounce(query, 300);

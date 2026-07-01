@@ -1,9 +1,10 @@
-import { Tag, Copy } from "lucide-react";
+import { Copy, Tag } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MOCK_COUPONS } from "@/constants/mockData";
+import { toast } from "sonner";
 
 export default function OffersPage() {
   return (
@@ -62,7 +63,17 @@ export default function OffersPage() {
                   })}
                 </p>
               </div>
-              <Button variant="outline" size="sm" className="w-full">
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full"
+                onClick={() => {
+                  navigator.clipboard
+                    .writeText(coupon.code)
+                    .then(() => toast.success(`Copied ${coupon.code}`))
+                    .catch(() => toast.error("Failed to copy code"));
+                }}
+              >
                 <Copy className="size-3.5" />
                 Copy code
               </Button>

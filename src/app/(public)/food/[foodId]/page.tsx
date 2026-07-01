@@ -1,11 +1,11 @@
 "use client";
 
+import { Leaf, Minus, Plus, ShoppingBag, Star } from "lucide-react";
 import { use, useState } from "react";
-import { Star, Leaf, Plus, Minus, ShoppingBag } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { MOCK_FOODS } from "@/constants/mockData";
 import { useAppDispatch } from "@/redux/hooks";
 import { addItem } from "@/redux/slices/cartSlice";
@@ -32,9 +32,8 @@ export default function FoodDetailPage({
   }
 
   const variantExtras = food.variants.reduce((total, variant) => {
-    const selectedOption = variant.options.find(
-      (o) => o.label === selectedVariants[variant.name],
-    );
+    const selectedLabel = selectedVariants[variant.name] ?? variant.options[0]?.label;
+    const selectedOption = variant.options.find((o) => o.label === selectedLabel);
     return total + (selectedOption?.extraPrice ?? 0);
   }, 0);
 
