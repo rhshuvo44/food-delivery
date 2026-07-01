@@ -3,6 +3,7 @@
 ## ✅ Status: Verified working
 
 Ran and passed in this environment:
+
 - `npx tsc --noEmit` — 0 errors
 - `npm run lint` — 0 errors/warnings
 - `npx prettier --check` — all files formatted
@@ -12,24 +13,25 @@ Ran and passed in this environment:
 
 ## Stack (as delivered)
 
-| Package | Version | Note |
-|---|---|---|
-| Next.js | 15.5.19 | App Router, `src/` directory |
-| React | 18.3.1 | Pinned — Next 15 + shadcn ecosystem is best supported on React 18 |
-| TypeScript | 5.x | strict mode |
-| Tailwind CSS | 4.x | CSS-first config (`@theme inline` in globals.css, not `tailwind.config.js`) |
-| Redux Toolkit + RTK Query | 2.x | Axios-backed `baseQuery`, not the default `fetchBaseQuery` |
-| React Hook Form + Zod | latest | installed, wired in Phase 3+ |
-| Axios | 1.18 | with request/response interceptors + refresh-token retry |
-| Lucide React | installed | icons, used from Phase 2 onward |
-| Recharts | installed | used in Phase 6 (Admin dashboard charts) |
-| Sonner | installed | global `<Toaster />` wired in `providers/index.tsx` |
-| next-themes | installed | light/dark mode wired and verified |
-| Prettier + `prettier-plugin-tailwindcss` | installed | class-sorting on save/format |
+| Package                                  | Version   | Note                                                                        |
+| ---------------------------------------- | --------- | --------------------------------------------------------------------------- |
+| Next.js                                  | 15.5.19   | App Router, `src/` directory                                                |
+| React                                    | 18.3.1    | Pinned — Next 15 + shadcn ecosystem is best supported on React 18           |
+| TypeScript                               | 5.x       | strict mode                                                                 |
+| Tailwind CSS                             | 4.x       | CSS-first config (`@theme inline` in globals.css, not `tailwind.config.js`) |
+| Redux Toolkit + RTK Query                | 2.x       | Axios-backed `baseQuery`, not the default `fetchBaseQuery`                  |
+| React Hook Form + Zod                    | latest    | installed, wired in Phase 3+                                                |
+| Axios                                    | 1.18      | with request/response interceptors + refresh-token retry                    |
+| Lucide React                             | installed | icons, used from Phase 2 onward                                             |
+| Recharts                                 | installed | used in Phase 6 (Admin dashboard charts)                                    |
+| Sonner                                   | installed | global `<Toaster />` wired in `providers/index.tsx`                         |
+| next-themes                              | installed | light/dark mode wired and verified                                          |
+| Prettier + `prettier-plugin-tailwindcss` | installed | class-sorting on save/format                                                |
 
 ## ⚠️ Things you should know before continuing
 
 **1. Two CLIs were unreachable in this build environment** (network allowlist only permits npm/GitHub/PyPI registries, not `ui.shadcn.com` or `fonts.googleapis.com`):
+
 - `npx shadcn init` — failed with a 401/auth error hitting `ui.shadcn.com`. I configured `components.json` and the CSS variable system **by hand** to be shadcn-CLI-compatible. If you run `npx shadcn add <component>` on your own machine (with real network access), it should work normally and respect this `components.json`.
 - `next/font/google` (Geist) — failed to fetch from `fonts.googleapis.com`. I removed it and fell back to the system font stack for now. **Phase 2 (Design System) will pick real, distinctive self-hosted fonts** via `next/font/local`, which doesn't require network access at all — so this isn't a long-term compromise, just sequencing.
 
@@ -70,6 +72,7 @@ src/
 ## Environment Variables
 
 Create `.env.local`:
+
 ```env
 NEXT_PUBLIC_API_BASE_URL=http://localhost:5000/api/v1
 ```

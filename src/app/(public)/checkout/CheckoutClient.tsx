@@ -91,7 +91,7 @@ export default function CheckoutClient() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
                 <Label htmlFor="co-name">Full name</Label>
-                <Input id="co-name" placeholder="Rafiq Ahmed" {...register("name")} />
+                <Input id="co-name" placeholder="Ripon Hossain" {...register("name")} />
                 {errors.name && (
                   <p className="text-destructive text-xs">{errors.name.message}</p>
                 )}
