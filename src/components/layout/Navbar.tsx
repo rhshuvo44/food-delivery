@@ -45,7 +45,7 @@ export function Navbar() {
         {/* Location picker — desktop only */}
         <button className="border-border hover:border-primary hidden shrink-0 items-center gap-1.5 rounded-full border-2 px-3.5 py-2 text-sm font-medium transition-colors md:flex">
           <MapPin className="text-primary size-4" />
-          <span className="max-w-35 truncate">Gulshan, Dhaka</span>
+          <span className="max-w-[140px] truncate">Gulshan, Dhaka</span>
         </button>
 
         {/* Search — desktop only, grows to fill space */}

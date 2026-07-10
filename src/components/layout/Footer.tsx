@@ -33,7 +33,7 @@ export function Footer() {
                 Forkly
               </span>
             </Link>
-            <p className="text-muted-foreground mt-3 max-w-50 text-sm">
+            <p className="text-muted-foreground mt-3 max-w-[200px] text-sm">
               Great food, delivered fast — from the kitchens you love.
             </p>
             <div className="mt-4 flex gap-3">
@@ -70,7 +70,7 @@ export function Footer() {
 
         <div className="border-border text-muted-foreground mt-12 flex flex-col items-center justify-between gap-3 border-t pt-6 text-xs sm:flex-row">
           <p>© {new Date().getFullYear()} Forkly. All rights reserved.</p>
-          <p>Ripon Web Tech.</p>
+          <p>Built for demonstration purposes — not affiliated with foodpanda.</p>
         </div>
       </div>
     </footer>

@@ -1,11 +1,11 @@
 "use client";
 
-import { Leaf, Minus, Plus, ShoppingBag, Star } from "lucide-react";
 import { use, useState } from "react";
+import { Star, Leaf, Plus, Minus, ShoppingBag } from "lucide-react";
 
-import { Breadcrumb } from "@/components/common/Breadcrumb";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { MOCK_FOODS } from "@/constants/mockData";
 import { useAppDispatch } from "@/redux/hooks";
 import { addItem } from "@/redux/slices/cartSlice";
@@ -32,8 +32,9 @@ export default function FoodDetailPage({
   }
 
   const variantExtras = food.variants.reduce((total, variant) => {
-    const selectedLabel = selectedVariants[variant.name] ?? variant.options[0]?.label;
-    const selectedOption = variant.options.find((o) => o.label === selectedLabel);
+    const selectedOption = variant.options.find(
+      (o) => o.label === selectedVariants[variant.name],
+    );
     return total + (selectedOption?.extraPrice ?? 0);
   }, 0);
 
@@ -81,7 +82,7 @@ export default function FoodDetailPage({
 
       <div className="mt-6 grid gap-8 lg:grid-cols-2">
         {/* Image placeholder */}
-        <div className="bg-muted flex h-72 items-center justify-center overflow-hidden rounded-2xl lg:h-auto lg:min-h-80">
+        <div className="bg-muted flex h-72 items-center justify-center overflow-hidden rounded-2xl lg:h-auto lg:min-h-[320px]">
           <span className="font-display text-muted-foreground/20 text-8xl font-bold">
             {food.name.charAt(0)}
           </span>

@@ -1,26 +1,26 @@
 "use client";
 
-import { Minus, Plus, ShoppingBag, Tag, Trash2 } from "lucide-react";
 import Link from "next/link";
+import { Minus, Plus, Trash2, ShoppingBag, Tag } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
-import { EmptyState } from "@/components/common/EmptyState";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { MOCK_COUPONS } from "@/constants/mockData";
+import { EmptyState } from "@/components/common/EmptyState";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
-  applyCoupon,
-  removeCoupon,
-  removeItem,
   selectCartItems,
   selectCartSubtotal,
   selectCouponCode,
   selectCouponDiscount,
+  removeItem,
   updateQuantity,
+  applyCoupon,
+  removeCoupon,
 } from "@/redux/slices/cartSlice";
+import { MOCK_COUPONS } from "@/constants/mockData";
 
 const DELIVERY_FEE = 40;
 
@@ -107,14 +107,9 @@ export default function CartPage() {
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() =>
-                        item.quantity <= 1
-                          ? dispatch(removeItem(item.id))
-                          : dispatch(
-                              updateQuantity({
-                                id: item.id,
-                                quantity: item.quantity - 1,
-                              }),
-                            )
+                        dispatch(
+                          updateQuantity({ id: item.id, quantity: item.quantity - 1 }),
+                        )
                       }
                       className="border-border hover:bg-secondary flex size-7 items-center justify-center rounded-full border"
                     >

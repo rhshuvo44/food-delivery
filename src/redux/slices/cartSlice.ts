@@ -7,10 +7,7 @@ interface CartState {
   couponDiscount: number;
 }
 
-const initialState: CartState = {
-  items: [],
-  couponDiscount: 0,
-};
+const initialState: CartState = { items: [], couponDiscount: 0 };
 
 const cartSlice = createSlice({
   name: "cart",
@@ -26,10 +23,7 @@ const cartSlice = createSlice({
       if (existing) {
         existing.quantity += 1;
       } else {
-        state.items.push({
-          ...action.payload,
-          id: action.payload.id ?? `${foodId}-${Date.now()}`,
-        });
+        state.items.push({ ...action.payload, id: action.payload.id ?? `${foodId}-${Date.now()}` });
       }
     },
     removeItem: (state, action: PayloadAction<string>) => {
@@ -45,14 +39,9 @@ const cartSlice = createSlice({
         }
       }
     },
-    updateVariants: (
-      state,
-      action: PayloadAction<{ id: string; selectedVariants: SelectedVariant[] }>,
-    ) => {
+    updateVariants: (state, action: PayloadAction<{ id: string; selectedVariants: SelectedVariant[] }>) => {
       const item = state.items.find((i) => i.id === action.payload.id);
-      if (item) {
-        item.selectedVariants = action.payload.selectedVariants;
-      }
+      if (item) item.selectedVariants = action.payload.selectedVariants;
     },
     clearCart: (state) => {
       state.items = [];
@@ -70,30 +59,14 @@ const cartSlice = createSlice({
   },
 });
 
-export const {
-  addItem,
-  removeItem,
-  updateQuantity,
-  updateVariants,
-  clearCart,
-  applyCoupon,
-  removeCoupon,
-} = cartSlice.actions;
-
+export const { addItem, removeItem, updateQuantity, updateVariants, clearCart, applyCoupon, removeCoupon } = cartSlice.actions;
 export default cartSlice.reducer;
 
-/* Selectors */
-export const selectCartItems = (state: { cart: CartState }) => state.cart.items;
+export const selectCartItems    = (state: { cart: CartState }) => state.cart.items;
 export const selectCartSubtotal = (state: { cart: CartState }) =>
-  state.cart.items.reduce(
-    (sum, item) =>
-      sum +
-      item.quantity *
-        (item.unitPrice + item.selectedVariants.reduce((s, v) => s + v.extraPrice, 0)),
-    0,
-  );
-export const selectCartCount = (state: { cart: CartState }) =>
+  state.cart.items.reduce((sum, item) =>
+    sum + item.quantity * (item.unitPrice + item.selectedVariants.reduce((s, v) => s + v.extraPrice, 0)), 0);
+export const selectCartCount    = (state: { cart: CartState }) =>
   state.cart.items.reduce((sum, item) => sum + item.quantity, 0);
-export const selectCouponDiscount = (state: { cart: CartState }) =>
-  state.cart.couponDiscount;
-export const selectCouponCode = (state: { cart: CartState }) => state.cart.couponCode;
+export const selectCouponDiscount = (state: { cart: CartState }) => state.cart.couponDiscount;
+export const selectCouponCode     = (state: { cart: CartState }) => state.cart.couponCode;

@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Providers } from "@/providers";
 import { fraunces, archivo } from "@/lib/fonts";
-
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Food Order | Order food online",
+  title: "FoodPanda Clone | Order food online",
   description:
     "Order food online from your favorite local restaurants — fast delivery, great prices.",
 };
