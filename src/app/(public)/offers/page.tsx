@@ -4,7 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MOCK_COUPONS } from "@/constants/mockData";
-import { toast } from "sonner";
 
 export default function OffersPage() {
   return (
@@ -63,17 +62,7 @@ export default function OffersPage() {
                   })}
                 </p>
               </div>
-              <Button
-                variant="outline"
-                size="sm"
-                className="w-full"
-                onClick={() => {
-                  navigator.clipboard
-                    .writeText(coupon.code)
-                    .then(() => toast.success(`Copied ${coupon.code}`))
-                    .catch(() => toast.error("Couldn't copy code"));
-                }}
-              >
+              <Button variant="outline" size="sm" className="w-full">
                 <Copy className="size-3.5" />
                 Copy code
               </Button>
