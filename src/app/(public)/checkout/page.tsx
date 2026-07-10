@@ -1,12 +1,12 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Banknote, CreditCard, MapPin } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useEffect } from "react";
+import { MapPin, CreditCard, Banknote } from "lucide-react";
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,10 +14,10 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
-  clearCart,
   selectCartItems,
   selectCartSubtotal,
   selectCouponDiscount,
+  clearCart,
 } from "@/redux/slices/cartSlice";
 
 const DELIVERY_FEE = 40;
@@ -54,13 +54,10 @@ export default function CheckoutPage() {
 
   const paymentMethod = watch("paymentMethod");
 
-  const [orderPlaced, setOrderPlaced] = useState(false);
-
   async function onSubmit() {
     // Simulated — Phase 7 wires this to the real API
     await new Promise((r) => setTimeout(r, 1200));
     dispatch(clearCart());
-    setOrderPlaced(true);
     toast.success("Order placed! Track it in your dashboard.");
     router.push("/dashboard/customer/orders");
   }
@@ -68,10 +65,10 @@ export default function CheckoutPage() {
   // Guard: redirect if cart is empty — must be in useEffect, not at render
   // time, to avoid "location is not defined" during SSR static generation.
   useEffect(() => {
-    if (items.length === 0 && !orderPlaced) {
+    if (items.length === 0) {
       router.replace("/cart");
     }
-  }, [items.length, orderPlaced, router]);
+  }, [items.length, router]);
 
   if (items.length === 0) return null;
 

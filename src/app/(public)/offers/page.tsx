@@ -1,4 +1,4 @@
-import { Copy, Tag } from "lucide-react";
+import { Tag, Copy } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

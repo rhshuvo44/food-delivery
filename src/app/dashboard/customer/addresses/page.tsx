@@ -1,21 +1,21 @@
 "use client";
 
-import { Briefcase, Home, MapPin, Pencil, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
+import { MapPin, Plus, Pencil, Trash2, Home, Briefcase } from "lucide-react";
 
-import { EmptyState } from "@/components/common/EmptyState";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Dialog,
   DialogContent,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogFooter,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { EmptyState } from "@/components/common/EmptyState";
 import { toast } from "sonner";
 
 interface Address {
@@ -56,12 +56,7 @@ export default function AddressesPage() {
   const [addresses, setAddresses] = useState<Address[]>(INITIAL_ADDRESSES);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editing, setEditing] = useState<Address | null>(null);
-  const [form, setForm] = useState({
-    label: "Home",
-    street: "",
-    area: "",
-    city: "Dhaka",
-  });
+  const [form, setForm] = useState({ label: "Home", street: "", area: "", city: "Dhaka" });
 
   function openAdd() {
     setEditing(null);
@@ -83,9 +78,7 @@ export default function AddressesPage() {
     if (editing) {
       setAddresses((prev) =>
         prev.map((a) =>
-          a.id === editing.id
-            ? { ...a, ...form, label: form.label as Address["label"] }
-            : a,
+          a.id === editing.id ? { ...a, ...form, label: form.label as Address["label"] } : a,
         ),
       );
       toast.success("Address updated");
@@ -107,15 +100,7 @@ export default function AddressesPage() {
   }
 
   function handleDelete(id: string) {
-    setAddresses((prev) => {
-      const removed = prev.find((a) => a.id === id);
-      const remaining = prev.filter((a) => a.id !== id);
-      if (!removed?.isDefault || remaining.length === 0) return remaining;
-      return remaining.map((a, index) => ({
-        ...a,
-        isDefault: index === 0,
-      }));
-    });
+    setAddresses((prev) => prev.filter((a) => a.id !== id));
     toast.success("Address removed");
   }
 
@@ -129,7 +114,7 @@ export default function AddressesPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-display text-2xl font-bold tracking-tight">Addresses</h1>
-          <p className="text-muted-foreground mt-1 text-sm">
+          <p className="mt-1 text-sm text-muted-foreground">
             Manage your delivery locations
           </p>
         </div>
@@ -159,19 +144,19 @@ export default function AddressesPage() {
                 className={addr.isDefault ? "border-primary/40 bg-primary/5" : ""}
               >
                 <CardContent className="flex items-start gap-4 py-4">
-                  <div className="bg-secondary flex size-10 shrink-0 items-center justify-center rounded-xl">
-                    <Icon className="text-muted-foreground size-5" />
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-secondary">
+                    <Icon className="size-5 text-muted-foreground" />
                   </div>
-                  <div className="min-w-0 flex-1">
+                  <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <p className="text-sm font-semibold">{addr.label}</p>
+                      <p className="font-semibold text-sm">{addr.label}</p>
                       {addr.isDefault && (
-                        <Badge variant="default" className="px-2 py-0 text-[10px]">
+                        <Badge variant="default" className="text-[10px] px-2 py-0">
                           Default
                         </Badge>
                       )}
                     </div>
-                    <p className="text-muted-foreground mt-0.5 text-sm">
+                    <p className="mt-0.5 text-sm text-muted-foreground">
                       {addr.street}, {addr.area}, {addr.city}
                     </p>
                     <div className="mt-3 flex flex-wrap gap-2">
@@ -196,7 +181,7 @@ export default function AddressesPage() {
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="text-destructive hover:text-destructive h-7 text-xs"
+                        className="h-7 text-xs text-destructive hover:text-destructive"
                         onClick={() => handleDelete(addr.id)}
                       >
                         <Trash2 className="size-3" /> Delete
